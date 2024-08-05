@@ -1,10 +1,13 @@
 import { Container } from './styles';
 
-import House from '../../components/house'
+import Card from '../../components/Card/Card';
+
+import Logo from '../../assets/title.png';
 
 function content() {
   return <Container>
-    <House />
+    <img src={Logo} />
+    <Card />
   </Container>;
 }
 
