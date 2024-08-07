@@ -6,9 +6,25 @@ const ITEMS = [
   {
     comodo: 'Cozinha',
     itens: [
-      'item 1',
-      'item 2',
-      'item 3'
+      'Jogo de prato',
+      'Escorredor',
+      'Apoio de prato'
+    ]
+  },
+  {
+    comodo: 'Quarto',
+    itens: [
+      'Jogo de lençol',
+      'Cobertor',
+      'Ventilador'
+    ]
+  },
+  {
+    comodo: 'Banheiro',
+    itens: [
+      'Limpador',
+      'Toalha de rosto',
+      'Toalha de banho'
     ]
   }
 ];
@@ -17,9 +33,11 @@ function Content() {
   return (
     <Container>
       <img src={Logo} alt="Logo" />
-      {ITEMS.map(item => (
-        <Card key={item.comodo} item={item} />
-      ))}
+      <div className='card-content'>
+        {ITEMS.map(item => (
+          <Card key={item.comodo} item={item} />
+        ))}
+      </div>
     </Container>
   );
 }
