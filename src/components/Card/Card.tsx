@@ -27,7 +27,7 @@ const Card: React.FC<CardProps> = ({ item, place }) => {
               <div className='input-group'>
                 <input type="checkbox" onChange={(e) => {
                   if(e.target.checked){
-                    setSelectedProduct({ title: i.name, price: 'R$ 40,00', quantity: 5 });
+                    setSelectedProduct({ title: i.name, price: i.price, quantity: i.quantity });
                     setShowModal(!showModal)
                   }
                 }}/>

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Box, Typography, Modal } from '@mui/material';
+import axios from 'axios';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -23,6 +24,7 @@ interface ModalProps {
 
 const ChooseProductModal: React.FC<ModalProps> = ({ item, setShowModal }) => {
   const [open, setOpen] = React.useState(false);
+  const [inputValue, setInputValue] = React.useState('');
 
   React.useEffect(() => {
     setOpen(true);
@@ -33,8 +35,14 @@ const ChooseProductModal: React.FC<ModalProps> = ({ item, setShowModal }) => {
     setShowModal(false)
   };
 
-  const handleSave = () => {
-    console.log('OLAA');
+  const handleSave = async () => {
+    if(inputValue){
+      await axios.put('http://localhost:4000/itens', {
+        name: item.title,
+        quantity: inputValue
+      });
+    }
+    window.location.reload();
     handleClose();
   }
   
@@ -53,7 +61,7 @@ const ChooseProductModal: React.FC<ModalProps> = ({ item, setShowModal }) => {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Produto: {item.title}
             <br />
-            Preço: {item.quantity}
+            Quantidade: {item.quantity}
             <br />
             <br />
           </Typography>
@@ -79,6 +87,7 @@ const ChooseProductModal: React.FC<ModalProps> = ({ item, setShowModal }) => {
               onBlur={(e) => {
                 (e.target as HTMLInputElement).style.borderColor = '#ccc';
               }}
+              onChange={(e) => { setInputValue(e.target.value) }}
             />
             <button 
               onClick={handleSave} 
