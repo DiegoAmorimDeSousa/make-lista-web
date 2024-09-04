@@ -23,7 +23,7 @@ const Card: React.FC<CardProps> = ({ item, place }) => {
         <Title>{place}</Title>
         <Content>
           {item && item?.map((i: any, index: any) => (
-            <div className='input-box' key={index}>
+            i.quantity > 0 && <div className='input-box' key={index}>
               <div className='input-group'>
                 <input type="checkbox" onChange={(e) => {
                   if(e.target.checked){
