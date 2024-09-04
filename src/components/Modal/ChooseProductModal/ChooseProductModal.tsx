@@ -37,7 +37,7 @@ const ChooseProductModal: React.FC<ModalProps> = ({ item, setShowModal }) => {
 
   const handleSave = async () => {
     if(inputValue){
-      await axios.put('http://localhost:4000/itens', {
+      await axios.put('https://make-list-seven.vercel.app/itens', {
         name: item.title,
         quantity: inputValue
       });

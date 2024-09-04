@@ -8,7 +8,6 @@ import Logo from '../../assets/title.png';
 
 function Content() {
   const [items, setItems] = useState([]);
-  const [mapItems, setMapItems] = useState([]);
 
   useEffect(() => {
     async function fetchItems() {
@@ -19,7 +18,7 @@ function Content() {
             'Content-Type': 'application/json' 
           }
         };
-        const response = await axios.get('http://localhost:4000/itens', config)
+        const response = await axios.get('https://make-list-seven.vercel.app/itens', config)
         setItems(response.data); 
       } catch (error) {
         console.error('Erro ao buscar os itens:', error);
@@ -36,11 +35,6 @@ function Content() {
   return (
     <Container>
       <img src={Logo} alt="Logo" />
-      {/* {items.map((item: any) => {
-        return item.kitchen.map((kitchen: any) => {
-          return <Card key={item.place} item={kitchen} />
-        })        
-      })} */}
       <Card key='Cozinha' place="Cozinha" item={items.map((item: any) => item.kitchen)[0]} />
     </Container>
   );
