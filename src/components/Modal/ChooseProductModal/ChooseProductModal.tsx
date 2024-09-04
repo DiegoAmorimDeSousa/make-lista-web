@@ -36,7 +36,9 @@ const ChooseProductModal: React.FC<ModalProps> = ({ item, setShowModal }) => {
   };
 
   const handleSave = async () => {
-    if(inputValue){
+    if(Number(inputValue) > item.quantity){
+      alert('Quantidade escolhida a mais do que a existente')
+    } else if(inputValue){
       await axios.put('https://make-list-seven.vercel.app/itens', {
         name: item.title,
         quantity: inputValue
