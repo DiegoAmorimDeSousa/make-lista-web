@@ -6,6 +6,7 @@ export const Container = styled.div`
   border-radius: 20px;
   background: white;
   min-width: 15vw;
+  max-width: 80vw;
 `;
 
 export const Title = styled.h2`
